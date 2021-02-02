@@ -16,7 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { PxbAuthModule, PxbAuthUIService, PxbRegisterUIService } from '@pxblue/angular-auth-workflow';
+import { PxbAuthModule, PxbAuthUIService } from '@pxblue/angular-auth-workflow';
 import {
     DrawerModule,
     EmptyStateModule,
@@ -35,7 +35,15 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { PxbLogoComponent } from './components/pxb-logo/pxb-logo.component';
 import { UserMenuComponent } from './navigation/user-menu/user-menu.component';
 import { AuthUIService } from './services/auth-workflow/auth-ui/auth-ui.service';
-import { RegisterUIService } from './services/auth-workflow/register-ui/register-ui.service';
+
+const config = {
+    apiKey: 'AIzaSyD8IZF95ybYZrA2cYwxugNrUilYnGa0le0',
+    authDomain: 'gspdemo-645bc.firebaseapp.com',
+    databaseURL: 'https://gspdemo-645bc-default-rtdb.firebaseio.com',
+    projectId: 'gspdemo-645bc',
+    storageBucket: 'gspdemo-645bc.appspot.com',
+    messagingSenderId: '523552938142'
+};
 
 @NgModule({
     declarations: [
@@ -66,6 +74,10 @@ import { RegisterUIService } from './services/auth-workflow/register-ui/register
         EmptyStateModule,
         PxbAuthModule,
         UserMenuModule,
+        AngularFireModule.initializeApp(config),
+        AngularFirestoreModule, // firestore
+        AngularFireAuthModule, // auth
+        AngularFireStorageModule // storage
     ],
     providers: [
         {
@@ -75,11 +87,7 @@ import { RegisterUIService } from './services/auth-workflow/register-ui/register
         {
             provide: PxbAuthUIService,
             useClass: AuthUIService,
-        },
-        {
-            provide: PxbRegisterUIService,
-            useClass: RegisterUIService,
-        },
+        }
     ],
     bootstrap: [AppComponent],
 })

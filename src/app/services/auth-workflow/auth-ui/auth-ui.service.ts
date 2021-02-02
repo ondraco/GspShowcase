@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { IPxbAuthUIService, PxbAuthSecurityService } from '@pxblue/angular-auth-workflow';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UserDetailService } from '../user-detail.service';
 
 const TIMEOUT_MS = 1500;
 
@@ -11,7 +13,9 @@ const TIMEOUT_MS = 1500;
 export class AuthUIService implements IPxbAuthUIService {
     constructor(
         private readonly _localStorageService: LocalStorageService,
-        private readonly _pxbSecurityService: PxbAuthSecurityService
+        private readonly _pxbSecurityService: PxbAuthSecurityService,
+        private readonly _authService: AngularFireAuth,
+        private readonly _userDetailService: UserDetailService
     ) {}
 
     // This method is called at the start of the application to check if a remembered user is returning to the app and initiate pxb SecurityContext.
@@ -19,11 +23,7 @@ export class AuthUIService implements IPxbAuthUIService {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const authData = this._localStorageService.readAuthData();
-                if (authData.isAuthenticated) {
-                    console.log('User is authenticated.');
-                    this._pxbSecurityService.onUserAuthenticated(authData.email, undefined, true);
-                    return resolve();
-                } else if (authData.email) {
+                if (authData.email) {
                     console.log('User is not authenticated, but we have remembered their Email.');
                     this._pxbSecurityService.onUserNotAuthenticated({ rememberMe: true, user: authData.email });
                 } else {
@@ -35,19 +35,23 @@ export class AuthUIService implements IPxbAuthUIService {
         });
     }
 
-    login(email: string, password: string, rememberMe: boolean): Promise<void> {
-        console.log(
-            `Performing a sample Login request with the following credentials:\n  email: ${email} \n  password: ${password} \n  rememberMe: ${String(
-                rememberMe
-            )}`
-        );
+    login(email: string, password: string): Promise<void> {
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (password.toLowerCase() === 'fail') {
-                    return reject();
-                }
-                return resolve();
-            }, TIMEOUT_MS);
+            this._authService
+                .signInWithEmailAndPassword(email, password)
+                .then((c) => {
+                    this._userDetailService.activeUser = c.user;
+                    this._userDetailService.updateGSPKey();
+                    return resolve();
+                })
+                .catch((error) => {
+                    this._userDetailService.clear();
+
+                    return reject({
+                        title: 'Error!',
+                        message: error,
+                    });
+                });
         });
     }
 

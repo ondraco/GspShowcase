@@ -27,7 +27,7 @@ import { PxbAuthConfig, AUTH_ROUTES } from '@pxblue/angular-auth-workflow';
 export class AuthComponent {
     constructor(pxbAuthConfig: PxbAuthConfig) {
         pxbAuthConfig.backgroundImage = 'assets/background.svg';
-        pxbAuthConfig.allowDebugMode = true;
+        pxbAuthConfig.allowDebugMode = false;
         pxbAuthConfig.showSelfRegistration = false;
 
         // If the ON_AUTHENTICATED route is not pre-populated by PXB auth workflow, provide it below.

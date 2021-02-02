@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AUTH_ROUTES, PxbAuthSecurityService, PxbChangePasswordDialogService } from '@pxblue/angular-auth-workflow';
+import { AUTH_ROUTES, PxbAuthSecurityService } from '@pxblue/angular-auth-workflow';
 import { Router } from '@angular/router';
+import { UserDetailService } from 'src/app/services/auth-workflow/user-detail.service';
 
 @Component({
     selector: 'app-user-menu',
@@ -13,13 +14,8 @@ export class UserMenuComponent {
     constructor(
         private readonly _router: Router,
         private readonly _pxbSecurityService: PxbAuthSecurityService,
-        private readonly _pxbChangePasswordService: PxbChangePasswordDialogService
+        public readonly userDetailService: UserDetailService
     ) {}
-
-    changePassword(): void {
-        this.open = false;
-        this._pxbChangePasswordService.openDialog();
-    }
 
     logout(): void {
         this._pxbSecurityService.updateSecurityState({ isAuthenticatedUser: false });
