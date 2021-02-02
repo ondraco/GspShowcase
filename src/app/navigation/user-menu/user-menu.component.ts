@@ -14,10 +14,11 @@ export class UserMenuComponent {
     constructor(
         private readonly _router: Router,
         private readonly _pxbSecurityService: PxbAuthSecurityService,
-        public readonly userDetailService: UserDetailService
+        private readonly _userDetailService: UserDetailService
     ) {}
 
     logout(): void {
+        this._userDetailService.logout();
         this._pxbSecurityService.updateSecurityState({ isAuthenticatedUser: false });
         void this._router.navigate([AUTH_ROUTES.AUTH_WORKFLOW]);
     }

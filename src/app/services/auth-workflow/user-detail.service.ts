@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import firebase from 'firebase/app';
 
@@ -6,7 +7,7 @@ import firebase from 'firebase/app';
     providedIn: 'root',
 })
 export class UserDetailService {
-    constructor(private readonly _dataService: AngularFireDatabase) {}
+    constructor(private readonly _dataService: AngularFireDatabase, private readonly _authService: AngularFireAuth) {}
     activeUser: firebase.User | null = null;
     errorMessage: string | null = null;
     gspKey: string | null = null;
@@ -27,9 +28,14 @@ export class UserDetailService {
             });
     }
 
-    clear(): void {
-      this.gspKey = null;
-      this.activeUser = null;
-      this.canWrite = false;
+    isAuthenticated(): boolean {
+        return this.activeUser !== null;
+    }
+
+    logout(): void {
+        this.gspKey = null;
+        this.activeUser = null;
+        this.canWrite = false;
+        void this._authService.signOut();
     }
 }
