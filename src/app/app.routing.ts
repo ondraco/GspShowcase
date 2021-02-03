@@ -6,6 +6,7 @@ import { APP_NAV_ITEMS } from './navigation/nav-items';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageOneComponent } from './pages/page-one/page-one.component';
 import { GraphDisplayComponent } from './graph-display/graph-display.component';
+import { GaugeDisplayComponent } from './gauge-display/gauge-display.component';
 
 const authWorkflowRoutes = getAuthSubRoutes();
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
         component: NavigationComponent,
         children: [
             { path: APP_NAV_ITEMS.graph.route, component: GraphDisplayComponent },
-            { path: APP_NAV_ITEMS.gauge.route, component: PageOneComponent },
+            { path: APP_NAV_ITEMS.gauge.route, component: GaugeDisplayComponent },
         ],
     },
 ];

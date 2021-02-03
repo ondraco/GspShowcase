@@ -38,6 +38,7 @@ import { GraphDisplayComponent } from './graph-display/graph-display.component';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { AmbientTempComponent } from './ambient-temp/ambient-temp.component';
+import { GaugeDisplayComponent } from './gauge-display/gauge-display.component';
 
 const config = {
     apiKey: 'AIzaSyD8IZF95ybYZrA2cYwxugNrUilYnGa0le0',
@@ -52,6 +53,7 @@ const config = {
     declarations: [
         AppComponent,
         GraphDisplayComponent,
+        GaugeDisplayComponent,
         AuthComponent,
         NavigationComponent,
         HomeComponent,
