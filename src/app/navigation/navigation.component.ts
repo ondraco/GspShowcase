@@ -15,7 +15,7 @@ export class NavigationComponent {
     toolbarTitle: string;
     routeListener: Subscription;
     variant: DrawerLayoutVariantType;
-    navItems = [APP_NAV_ITEMS.home, APP_NAV_ITEMS.page1, APP_NAV_ITEMS.page2];
+    navItems = [APP_NAV_ITEMS.graph, APP_NAV_ITEMS.gauge];
 
     constructor(
         private readonly _router: Router,
@@ -61,19 +61,14 @@ export class NavigationComponent {
         this.routeListener = this._router.events.subscribe((route) => {
             if (route instanceof NavigationEnd) {
                 switch (route.urlAfterRedirects) {
-                    case `/${APP_NAV_ITEMS.home.route}`: {
-                        this.toolbarTitle = APP_NAV_ITEMS.home.title;
-                        this._stateService.setSelectedItem(APP_NAV_ITEMS.home.title);
+                    case `/${APP_NAV_ITEMS.graph.route}`: {
+                        this.toolbarTitle = APP_NAV_ITEMS.graph.title;
+                        this._stateService.setSelectedItem(APP_NAV_ITEMS.graph.title);
                         break;
                     }
-                    case `/${APP_NAV_ITEMS.page1.route}`: {
-                        this.toolbarTitle = APP_NAV_ITEMS.page1.title;
-                        this._stateService.setSelectedItem(APP_NAV_ITEMS.page1.title);
-                        break;
-                    }
-                    case `/${APP_NAV_ITEMS.page2.route}`: {
-                        this.toolbarTitle = APP_NAV_ITEMS.page2.title;
-                        this._stateService.setSelectedItem(APP_NAV_ITEMS.page2.title);
+                    case `/${APP_NAV_ITEMS.gauge.route}`: {
+                        this.toolbarTitle = APP_NAV_ITEMS.gauge.title;
+                        this._stateService.setSelectedItem(APP_NAV_ITEMS.gauge.title);
                         break;
                     }
                     default: {

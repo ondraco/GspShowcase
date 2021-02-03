@@ -4,9 +4,8 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { PxbAuthGuard, AUTH_ROUTES, getAuthSubRoutes } from '@pxblue/angular-auth-workflow';
 import { APP_NAV_ITEMS } from './navigation/nav-items';
 import { NavigationComponent } from './navigation/navigation.component';
-import { HomeComponent } from './pages/home/home.component';
 import { PageOneComponent } from './pages/page-one/page-one.component';
-import { PageTwoComponent } from './pages/page-two/page-two.component';
+import { GraphDisplayComponent } from './graph-display/graph-display.component';
 
 const authWorkflowRoutes = getAuthSubRoutes();
 const routes: Routes = [
@@ -17,9 +16,8 @@ const routes: Routes = [
         canActivate: [PxbAuthGuard],
         component: NavigationComponent,
         children: [
-            { path: APP_NAV_ITEMS.home.route, component: HomeComponent },
-            { path: APP_NAV_ITEMS.page1.route, component: PageOneComponent },
-            { path: APP_NAV_ITEMS.page2.route, component: PageTwoComponent },
+            { path: APP_NAV_ITEMS.graph.route, component: GraphDisplayComponent },
+            { path: APP_NAV_ITEMS.gauge.route, component: PageOneComponent },
         ],
     },
 ];

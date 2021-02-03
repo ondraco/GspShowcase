@@ -1,0 +1,31 @@
+
+<div class="container-fluid h-100 w-100">
+    <div class="row h-100 flexNoWrap">
+        <div class="col-auto overflow-auto">
+            <div *ngFor="let engine of this.GetEngines(); let i = index" [ngClass]="{'engineCardActive' : engine.IsOn}" class="engineCard card" style="width: 18rem;">
+                <img class="card-img-top" src="{{engine.Image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{engine.Name}}</h5>
+                    <p class="card-text">Speed: {{engine.Speed}} rpm <br>
+                        Temperature: {{engine.Temperature}} C</p>
+                    <button (click)="engine.StartStop()" [hidden]="!this.userDetailService.canWrite" type="button" class="btn btn-primary">{{engine.IsOn? "Stop" : "Start"}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col minH0 h-100">
+            <div id="chartDiv" class="minH0 h50">
+                <canvas class="minH0 h-100" baseChart [datasets]="lineChartData" [options]="lineChartOptions"
+                    [colors]="chartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins" [labels]="lineChartLabels">
+                </canvas>
+            </div>
+            <div id="chartDivB" class="minH0 h50">
+                <canvas class="minH0 h-100" baseChart [datasets]="barChartData" [options]="barChartOptions"
+                    [colors]="chartColors" [legend]="barChartLegend" [chartType]="barChartType"
+                    [plugins]="barChartPlugins" [labels]="barChartLabels">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
+

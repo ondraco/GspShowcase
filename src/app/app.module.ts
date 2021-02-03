@@ -30,11 +30,14 @@ import { AppRoutingModule } from './app.routing';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageOneComponent } from './pages/page-one/page-one.component';
-import { PageTwoComponent } from './pages/page-two/page-two.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PxbLogoComponent } from './components/pxb-logo/pxb-logo.component';
 import { UserMenuComponent } from './navigation/user-menu/user-menu.component';
 import { AuthUIService } from './services/auth-workflow/auth-ui/auth-ui.service';
+import { GraphDisplayComponent } from './graph-display/graph-display.component';
+import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+import { AmbientTempComponent } from './ambient-temp/ambient-temp.component';
 
 const config = {
     apiKey: 'AIzaSyD8IZF95ybYZrA2cYwxugNrUilYnGa0le0',
@@ -48,13 +51,14 @@ const config = {
 @NgModule({
     declarations: [
         AppComponent,
+        GraphDisplayComponent,
         AuthComponent,
         NavigationComponent,
         HomeComponent,
         PageOneComponent,
-        PageTwoComponent,
         PxbLogoComponent,
         UserMenuComponent,
+        AmbientTempComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -77,7 +81,9 @@ const config = {
         AngularFireModule.initializeApp(config),
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
-        AngularFireStorageModule // storage
+        AngularFireStorageModule, // storage
+        ChartsModule,
+        HttpClientModule,
     ],
     providers: [
         {

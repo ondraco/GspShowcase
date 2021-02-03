@@ -19,7 +19,7 @@
             </pxb-drawer-nav-group>
         </pxb-drawer-body>
     </pxb-drawer>
-    <div pxb-content class="drawer-content">
+    <div pxb-content class="drawer-content vh-100">
         <mat-toolbar class="toolbar">
             <button
                 mat-icon-button
@@ -33,6 +33,17 @@
             <pxb-spacer></pxb-spacer>
             <app-user-menu></app-user-menu>
         </mat-toolbar>
-        <router-outlet></router-outlet>
+
+        <div class="row flex-grow-1 p-0 m-0">
+            <div class="w-100 h-100">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+        <div class="row bg-secondary p-0 m-0" id="header">
+            <div class="col">
+                <app-ambient-temp></app-ambient-temp>
+            </div>
+        </div>
     </div>
 </pxb-drawer-layout>

@@ -23,11 +23,9 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "aot": true,
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
+                        "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.scss",
                             "./node_modules/@pxblue/angular-themes/theme.scss",
                             "./node_modules/typeface-open-sans"
@@ -94,11 +92,9 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
+                        "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.scss",
                             "./node_modules/@pxblue/angular-themes/theme.scss",
                             "./node_modules/typeface-open-sans"
