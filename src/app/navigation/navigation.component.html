@@ -34,10 +34,12 @@
             <app-user-menu></app-user-menu>
         </mat-toolbar>
 
-        <div class="row flex-grow-1 p-0 m-0">
-            <div class="w-100 h-100">
-                <router-outlet></router-outlet>
+        <div class="row flex-fill flex-shrink-1 minH0 p-0 m-0">
+          <div class="col d-flex flex-column flex-shrink-1 minH0 h-100">
+            <div class="h-100 minH0">
+              <router-outlet></router-outlet>
             </div>
+          </div>
         </div>
 
         <div class="row bg-secondary p-0 m-0" id="header">
