@@ -28,7 +28,8 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.scss",
                             "./node_modules/@pxblue/angular-themes/theme.scss",
-                            "./node_modules/typeface-open-sans"
+                            "./node_modules/typeface-open-sans",
+                            "./node_modules/@pxblue/icons/iconfont/PXBlueIcons.css"
                         ],
                         "scripts": []
                     },
@@ -97,7 +98,8 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.scss",
                             "./node_modules/@pxblue/angular-themes/theme.scss",
-                            "./node_modules/typeface-open-sans"
+                            "./node_modules/typeface-open-sans",
+                            "./node_modules/@pxblue/icons/iconfont/PXBlueIcons.css"
                         ],
                         "scripts": []
                     }

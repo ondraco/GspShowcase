@@ -18,8 +18,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { PxbAuthModule, PxbAuthUIService } from '@pxblue/angular-auth-workflow';
 import {
+  ChannelValueModule,
     DrawerModule,
     EmptyStateModule,
+    HeroModule,
     InfoListItemModule,
     SpacerModule,
     UserMenuModule,
@@ -86,6 +88,8 @@ const config = {
         AngularFireStorageModule, // storage
         ChartsModule,
         HttpClientModule,
+        HeroModule,
+        ChannelValueModule
     ],
     providers: [
         {
