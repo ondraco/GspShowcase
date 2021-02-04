@@ -4,7 +4,6 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { PxbAuthGuard, AUTH_ROUTES, getAuthSubRoutes } from '@pxblue/angular-auth-workflow';
 import { APP_NAV_ITEMS } from './navigation/nav-items';
 import { NavigationComponent } from './navigation/navigation.component';
-import { PageOneComponent } from './pages/page-one/page-one.component';
 import { GraphDisplayComponent } from './graph-display/graph-display.component';
 import { GaugeDisplayComponent } from './gauge-display/gauge-display.component';
 

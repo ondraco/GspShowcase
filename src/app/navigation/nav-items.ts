@@ -7,13 +7,13 @@ export type NavItem = {
 const graphNavItem: NavItem = {
     title: 'Graph',
     route: 'home',
-    icon: 'home',
+    icon: 'show_chart',
 };
 
 const gaugeNavItem: NavItem = {
     title: 'Gauge',
     route: 'gauge',
-    icon: 'looks_one',
+    icon: 'speed',
 };
 
 
