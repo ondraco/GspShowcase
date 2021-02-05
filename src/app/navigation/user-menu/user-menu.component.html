@@ -1,4 +1,9 @@
-<pxb-user-menu avatarValue="AV" [(open)]="open">
+<pxb-user-menu
+    [avatarValue]="userDetailService.activeUser.email.substring(0, 3).toUpperCase()"
+    [(open)]="open"
+    [menuTitle]="'Logged in as'"
+    [menuSubtitle]="userDetailService.activeUser.email"
+>
     <mat-nav-list pxb-menu-body [style.paddingTop.px]="0">
         <pxb-info-list-item [dense]="true" (click)="logout()">
             <mat-icon pxb-icon>login</mat-icon>

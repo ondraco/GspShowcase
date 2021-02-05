@@ -2,6 +2,13 @@
 
 #engine-list {
     ::ng-deep {
+        .pxb-score-card-action-items-wrapper {
+            .mat-icon {
+              width: 40px;
+              height: 40px;
+              font-size: 40px;
+            }
+        }
         .engineCardActive.pxb-score-card {
             .pxb-score-card-header {
                 background-color: map-get($pxb-green, 400);
