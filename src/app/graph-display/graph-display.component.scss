@@ -1,14 +1,5 @@
 @import '~@pxblue/colors/palette.scss';
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 #engine-list {
     ::ng-deep {
         .engineCardActive.pxb-score-card {
@@ -32,6 +23,9 @@
             }
         }
         .engineError.pxb-score-card {
+            .temp-engine-icon {
+                animation: blinkingColor 1s infinite;
+            }
             .pxb-score-card-header {
                 background-color: map-get($pxb-red, 400);
                 color: white;

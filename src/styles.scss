@@ -1,26 +1,45 @@
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .flexNoWrap {
-  flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .minH0 {
-  min-width: 0;
-  min-height: 0;
+    min-width: 0;
+    min-height: 0;
 }
 
 .minH100 {
-  min-height: 100%;
+    min-height: 100%;
 }
 
 .h50 {
-  height: 50%;
+    height: 50%;
 }
 
 .engineCard {
-  margin: 1em;
+    margin: 1em;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes blinkingColor {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
