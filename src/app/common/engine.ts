@@ -2,12 +2,15 @@ import { ValueCollection } from '../common/ValueProvider/tagValue';
 import { ValueProvider } from '../common/ValueProvider/valueProvider';
 
 export class Engine {
-    readonly MaxOkTemp = 100;
+    readonly ErrorTemp = 100;
+    readonly WarnTemp = 70;
+
     Name = 'Engine';
     SpeedTagId = -1;
     TempTagIs = -1;
     OnTagId = -1;
-    IsOk = true;
+    IsError = false;
+    IsWarn = false;
     NameTagId = -1;
     Image = '';
     Speed = 0;
@@ -45,7 +48,8 @@ export class Engine {
             }
             if (v.key === this.TempTagIs) {
                 this.Temperature = v.asNumeric();
-                this.IsOk = this.Temperature < this.MaxOkTemp;
+                this.IsError = this.Temperature > this.ErrorTemp;
+                this.IsWarn = this.IsError || this.Temperature > this.WarnTemp;
             }
             if (v.key === this.OnTagId) {
                 this.IsOn = v.asBoolean();

@@ -8,6 +8,7 @@ import { DataProvider } from '../common/DataProvider/dataProvider';
 import { Subscription } from 'rxjs';
 import { UserDetailService } from '../services/auth-workflow/user-detail.service';
 import { ViewportService } from '../services/viewport/viewport.service';
+import { AppColorsService } from '../services/app-colors.service';
 
 @Component({
     selector: 'app-graph-display',
@@ -18,7 +19,6 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
     private readonly lineChartDataCount = 60;
     lineChartData: ChartDataSets[] = [];
     points = 0;
-
     lineChartLabels: Label[] = [];
     lineChartOptions: ChartOptions = {
         responsive: true,
@@ -104,6 +104,7 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
         private readonly valueProvider: ValueProvider,
         private readonly dataProvider: DataProvider,
         public readonly userDetailService: UserDetailService,
+        public readonly appColorService: AppColorsService,
         private readonly _viewportService: ViewportService
     ) {}
 

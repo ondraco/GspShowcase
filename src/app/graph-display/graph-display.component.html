@@ -3,7 +3,7 @@
         <div id="engine-list" class="col-auto overflow-auto">
             <pxb-score-card
                 *ngFor="let engine of this.GetEngines(); let i = index"
-                [ngClass]="{ engineCardActive: engine.IsOn, engineError: !engine.IsOk }"
+                [ngClass]="{ engineCardActive: engine.IsOn, engineError: engine.IsError, engineWarn: engine.IsWarn }"
                 [headerTitle]="engine.Name"
                 [headerSubtitle]="engine.getStatus()"
                 [headerInfo]="engine.getIssues()"
@@ -19,12 +19,12 @@
                 <pxb-hero-banner pxb-badge>
                     <pxb-hero
                         label="Temperature"
-                        [iconBackgroundColor]="'white'"
+                        [iconBackgroundColor]="appColorService.getEngineTempBackColor(engine)"
                         [iconSize]="72"
                         [value]="engine.Temperature.toString()"
                         units="°C"
                     >
-                        <i pxb-primary class="pxb-temp"> </i>
+                        <i class="pxb-temp temp-engine-icon" pxb-primary [style.color]="appColorService.getEngineTempColor(engine)"> </i>
                     </pxb-hero>
                     <pxb-hero
                         label="Speed"
@@ -33,7 +33,7 @@
                         [value]="engine.Speed.toString()"
                         units="rpm"
                     >
-                        <mat-icon pxb-primary>loop</mat-icon>
+                        <mat-icon class="rotating-engine-icon" pxb-primary>loop</mat-icon>
                     </pxb-hero>
                 </pxb-hero-banner>
 
