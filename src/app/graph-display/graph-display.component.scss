@@ -1,11 +1,28 @@
 @import '~@pxblue/colors/palette.scss';
 
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 #engine-list {
     ::ng-deep {
         .engineCardActive.pxb-score-card {
             .pxb-score-card-header {
                 background-color: map-get($pxb-green, 400);
                 color: white;
+            }
+            .pxb-score-card-badge-wrapper .pxb-hero-banner-content .pxb-hero-content {
+                .mat-icon {
+                    animation-name: rotate;
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: linear;
+                }
             }
         }
         .engineError.pxb-score-card {
