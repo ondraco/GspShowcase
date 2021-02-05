@@ -23,6 +23,7 @@ import {
     EmptyStateModule,
     HeroModule,
     InfoListItemModule,
+    ScoreCardModule,
     SpacerModule,
     UserMenuModule,
 } from '@pxblue/angular-components';
@@ -89,7 +90,8 @@ const config = {
         ChartsModule,
         HttpClientModule,
         HeroModule,
-        ChannelValueModule
+        ChannelValueModule,
+        ScoreCardModule
     ],
     providers: [
         {

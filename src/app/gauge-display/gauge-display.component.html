@@ -33,7 +33,7 @@
               <canvas width="400" height="200" [attr.id]="'canvas' + i + '_speed'"></canvas>
               <p class="text-center">Speed [RPM]</p>
             </div>
-            <button (click)="engine.StartStop()" [hidden]="!this.userDetailService.canWrite" type="button"
+            <button (click)="engine.startStop()" [hidden]="!this.userDetailService.canWrite" type="button"
               class="btn btn-primary bigBtn">
               {{ engine.IsOn ? "Stop" : "Start" }}
             </button>

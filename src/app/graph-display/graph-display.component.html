@@ -1,35 +1,46 @@
 <div class="container-fluid h-100 w-100">
     <div class="row h-100 flexNoWrap">
-        <div class="col-auto overflow-auto">
-            <div
+        <div id="engine-list" class="col-auto overflow-auto">
+            <pxb-score-card
                 *ngFor="let engine of this.GetEngines(); let i = index"
-                [ngClass]="{ engineCardActive: engine.IsOn }"
-                class="engineCard card"
-                style="width: 18rem"
+                [ngClass]="{ engineCardActive: engine.IsOn, engineError: !engine.IsOk }"
+                [headerTitle]="engine.Name"
+                [headerSubtitle]="engine.getStatus()"
+                [headerInfo]="engine.getIssues()"
+                class="engineCard"
+                [badgeOffset]="-100"
             >
-                <img class="card-img-top" src="{{ engine.Image }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">{{ engine.Name }}</h5>
-                    <p class="card-text">
-                        <pxb-hero-banner>
-                            <pxb-hero label="Temperature" [value]="engine.Temperature.toString()" units="°C">
-                                <i pxb-primary class="pxb-temp"> </i>
-                            </pxb-hero>
-                            <pxb-hero label="Speed" [value]="engine.Speed.toString()" units="rpm">
-                                <mat-icon pxb-primary>loop</mat-icon>
-                            </pxb-hero>
-                        </pxb-hero-banner>
-                    </p>
-                    <button
-                        (click)="engine.StartStop()"
-                        [hidden]="!this.userDetailService.canWrite"
-                        type="button"
-                        class="btn btn-primary"
+                <ng-container pxb-action-items>
+                    <mat-icon [hidden]="!this.userDetailService.canWrite" (click)="engine.startStop()">{{
+                        engine.IsOn ? 'stop' : 'play_arrow'
+                    }}</mat-icon>
+                </ng-container>
+
+                <pxb-hero-banner pxb-badge>
+                    <pxb-hero
+                        label="Temperature"
+                        [iconBackgroundColor]="'white'"
+                        [iconSize]="72"
+                        [value]="engine.Temperature.toString()"
+                        units="°C"
                     >
-                        {{ engine.IsOn ? 'Stop' : 'Start' }}
-                    </button>
+                        <i pxb-primary class="pxb-temp"> </i>
+                    </pxb-hero>
+                    <pxb-hero
+                        label="Speed"
+                        [iconBackgroundColor]="'white'"
+                        [iconSize]="72"
+                        [value]="engine.Speed.toString()"
+                        units="rpm"
+                    >
+                        <mat-icon pxb-primary>loop</mat-icon>
+                    </pxb-hero>
+                </pxb-hero-banner>
+
+                <div pxb-body>
+                    <img class="engine-img" src="{{ engine.Image }}" alt="Card image cap" />
                 </div>
-            </div>
+            </pxb-score-card>
         </div>
         <div class="col minH0 h-100">
             <div id="chartDiv" class="minH0 h50">

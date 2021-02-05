@@ -1,0 +1,26 @@
+@import '~@pxblue/colors/palette.scss';
+
+#engine-list {
+    ::ng-deep {
+        .engineCardActive.pxb-score-card {
+            .pxb-score-card-header {
+                background-color: map-get($pxb-green, 400);
+                color: white;
+            }
+        }
+        .engineError.pxb-score-card {
+            .pxb-score-card-header {
+                background-color: map-get($pxb-red, 400);
+                color: white;
+            }
+        }
+    }
+}
+
+::ng-deep .pxb-score-card .pxb-score-card-header-background {
+    background-image: url('../../assets/img/topology_40.png');
+}
+
+.engine-img {
+    height: 180px;
+}
