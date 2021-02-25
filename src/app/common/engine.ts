@@ -4,6 +4,8 @@ import { ValueProvider } from '../common/ValueProvider/valueProvider';
 export class Engine {
     readonly ErrorTemp = 100;
     readonly WarnTemp = 70;
+    readonly MaintenanceWarnLimit = 70;
+    readonly MaintenanceCriticalLimit = 90;
 
     Name = 'Engine';
     SpeedTagId = -1;
@@ -20,6 +22,8 @@ export class Engine {
     Maintenance = 0;
     Temperature = 0;
     valueProvider: ValueProvider;
+    MaintenanceWarn = false;
+    MaintenanceCritical = false;
 
     public constructor(provider: ValueProvider, init?: Partial<Engine>) {
         Object.assign(this, init);
@@ -65,6 +69,8 @@ export class Engine {
                 this.Uptime = x;
                 const maintenance = this.Uptime / (this.MaintenanceUptime / 100);
                 this.Maintenance = Math.min(maintenance, 100);
+                this.MaintenanceWarn = this.Maintenance >= this.MaintenanceWarnLimit;
+                this.MaintenanceCritical = this.Maintenance >= this.MaintenanceCriticalLimit;
             });
     }
 

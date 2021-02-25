@@ -16,6 +16,10 @@ export class AppColorsService {
     readonly tempWarnColor = Colors.orange[400];
     readonly tempErrorColor = Colors.red[400];
 
+    readonly healthOkColor = this.tempOkColor;
+    readonly healthWarnColor = this.tempWarnColor;
+    readonly healthErrorColor = this.tempErrorColor;
+
     getEngineTempBackColor(engine: Engine): string {
         if (engine.Temperature > engine.ErrorTemp) {
             return this.tempErrorBackColor;
@@ -24,6 +28,16 @@ export class AppColorsService {
         }
 
         return this.tempOkBackColor;
+    }
+
+    getEngineHealthColor(engine: Engine): string {
+        if (engine.MaintenanceCritical) {
+            return this.healthErrorColor;
+        } else if (engine.MaintenanceWarn) {
+            return this.healthWarnColor;
+        }
+
+        return this.healthOkColor;
     }
 
     getEngineTempColor(engine: Engine): string {

@@ -20,6 +20,11 @@
           units="rpm">
           <mat-icon class="rotating-engine-icon" pxb-primary>loop</mat-icon>
         </pxb-hero>
+        <pxb-hero label="Health" [iconBackgroundColor]="'white'" [iconSize]="72"
+          [value]="(100 - engine.Maintenance).toString()" units="/100">
+          <mat-icon [style.color]="appColorService.getEngineHealthColor(engine)" class="health-engine-icon" pxb-primary>
+            build</mat-icon>
+        </pxb-hero>
       </pxb-hero-banner>
 
       <div pxb-body>
