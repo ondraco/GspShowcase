@@ -60,10 +60,12 @@
 }
 
 .engine-img {
+  height: 200px;
   vertical-align: top;
 }
 
 .gauge-container {
+  margin-top: 1em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

@@ -3,7 +3,7 @@
     <pxb-score-card *ngFor="let engine of this.GetEngines(); let i = index"
       [ngClass]="{ engineCardActive: engine.IsOn, engineError: engine.IsError, engineWarn: engine.IsWarn }"
       [headerTitle]="engine.Name" [headerSubtitle]="engine.getStatus()" [headerInfo]="engine.getIssues()"
-      class="engineCard" [badgeOffset]="-100">
+      class="engineCard" [badgeOffset]="0">
       <ng-container pxb-action-items>
         <mat-icon [hidden]="!this.userDetailService.canWrite" (click)="engine.startStop()">{{
           engine.IsOn ? 'stop' : 'play_arrow'
@@ -31,61 +31,14 @@
         <div class="gauge-container">
           <img class="engine-img" src="{{ engine.Image }}" alt="Card image cap" />
           <div class="d-inline-block">
-            <canvas width="400" height="200" [attr.id]="'canvas' + i + '_temp'"></canvas>
+            <canvas width="350" height="170" [attr.id]="'canvas' + i + '_temp'"></canvas>
             <p class="text-center">Temperature [C]</p>
           </div>
           <div class="d-inline-block">
-            <canvas width="400" height="200" [attr.id]="'canvas' + i + '_speed'"></canvas>
+            <canvas width="350" height="170" [attr.id]="'canvas' + i + '_speed'"></canvas>
             <p class="text-center">Speed [RPM]</p>
           </div>
         </div>
       </div>
     </pxb-score-card>
   </div>
-
-  <!--
-  <div *ngFor="let engine of this.GetEngines(); let i = index" [ngClass]="{ engineCardActive: engine.IsOn }"
-    class="engineCard card">
-    <div class="row no-gutters">
-      <div class="col-auto">
-        <img src="{{ engine.Image }}" class="card-img" alt="..." />
-        <div class="row w-100">
-          <div class="col pr-1">
-            <div class="progress ml-1 mt-1">
-              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
-                [style.width.%]="engine.Maintenance" [attr.aria-valuenow]="engine.Uptime" aria-valuemin="0"
-                [attr.aria-valuenow]="engine.MaintenanceUptime">
-                <span>{{ engine.Uptime }}s [{{ engine.Maintenance }}%]</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto pl-1">
-            <img id="maintenance-img" src="assets/img/wrench.svg" />
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-body">
-          <div>
-            <h5 class="card-title">{{ engine.Name }}</h5>
-          </div>
-          <div>
-            <div class="d-inline-block">
-              <canvas width="400" height="200" [attr.id]="'canvas' + i + '_temp'"></canvas>
-              <p class="text-center">Temperature [C]</p>
-            </div>
-            <div class="d-inline-block">
-              <canvas width="400" height="200" [attr.id]="'canvas' + i + '_speed'"></canvas>
-              <p class="text-center">Speed [RPM]</p>
-            </div>
-            <button (click)="engine.startStop()" [hidden]="!this.userDetailService.canWrite" type="button"
-              class="btn btn-primary bigBtn">
-              {{ engine.IsOn ? "Stop" : "Start" }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
