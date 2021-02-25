@@ -1,4 +1,44 @@
 <div class="overflow-auto h-100">
+  <div id="engine-list" class="col-auto overflow-auto">
+    <pxb-score-card *ngFor="let engine of this.GetEngines(); let i = index"
+      [ngClass]="{ engineCardActive: engine.IsOn, engineError: engine.IsError, engineWarn: engine.IsWarn }"
+      [headerTitle]="engine.Name" [headerSubtitle]="engine.getStatus()" [headerInfo]="engine.getIssues()"
+      class="engineCard" [badgeOffset]="-100">
+      <ng-container pxb-action-items>
+        <mat-icon [hidden]="!this.userDetailService.canWrite" (click)="engine.startStop()">{{
+          engine.IsOn ? 'stop' : 'play_arrow'
+          }}</mat-icon>
+      </ng-container>
+
+      <pxb-hero-banner pxb-badge>
+        <pxb-hero label="Temperature" [iconBackgroundColor]="appColorService.getEngineTempBackColor(engine)"
+          [iconSize]="72" [value]="engine.Temperature.toString()" units="°C">
+          <i class="pxb-temp temp-engine-icon" pxb-primary [style.color]="appColorService.getEngineTempColor(engine)">
+          </i>
+        </pxb-hero>
+        <pxb-hero label="Speed" [iconBackgroundColor]="'white'" [iconSize]="72" [value]="engine.Speed.toString()"
+          units="rpm">
+          <mat-icon class="rotating-engine-icon" pxb-primary>loop</mat-icon>
+        </pxb-hero>
+      </pxb-hero-banner>
+
+      <div pxb-body>
+        <div class="gauge-container">
+          <img class="engine-img" src="{{ engine.Image }}" alt="Card image cap" />
+          <div class="d-inline-block">
+            <canvas width="400" height="200" [attr.id]="'canvas' + i + '_temp'"></canvas>
+            <p class="text-center">Temperature [C]</p>
+          </div>
+          <div class="d-inline-block">
+            <canvas width="400" height="200" [attr.id]="'canvas' + i + '_speed'"></canvas>
+            <p class="text-center">Speed [RPM]</p>
+          </div>
+        </div>
+      </div>
+    </pxb-score-card>
+  </div>
+
+  <!--
   <div *ngFor="let engine of this.GetEngines(); let i = index" [ngClass]="{ engineCardActive: engine.IsOn }"
     class="engineCard card">
     <div class="row no-gutters">
@@ -43,3 +83,4 @@
     </div>
   </div>
 </div>
+-->

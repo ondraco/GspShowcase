@@ -1,0 +1,69 @@
+.bigBtn {
+  width: 200px;
+  display: inline;
+  vertical-align: top;
+}
+
+#maintenance-img {
+  width: 20px;
+  height: 20px;
+  display: inline;
+}
+
+.progress-bar span {
+  position: absolute;
+  margin-left: 20px;
+  color: black;
+}
+
+@import "~@pxblue/colors/palette.scss";
+
+#engine-list {
+  ::ng-deep {
+    .pxb-score-card-action-items-wrapper {
+      .mat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+      }
+    }
+    .engineCardActive.pxb-score-card {
+      .pxb-score-card-header {
+        background-color: map-get($pxb-green, 400);
+        color: white;
+      }
+      .pxb-score-card-badge-wrapper .pxb-hero-banner-content .pxb-hero-content {
+        .rotating-engine-icon {
+          animation-name: rotate;
+          animation-duration: 1s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      }
+    }
+    .engineWarn.pxb-score-card {
+      .pxb-score-card-header {
+        background-color: map-get($pxb-orange, 400);
+        color: white;
+      }
+    }
+    .engineError.pxb-score-card {
+      .temp-engine-icon {
+        animation: blinkingColor 1s infinite;
+      }
+      .pxb-score-card-header {
+        background-color: map-get($pxb-red, 400);
+        color: white;
+      }
+    }
+  }
+}
+
+.engine-img {
+  vertical-align: top;
+}
+
+.gauge-container {
+  display: flex;
+  align-items: center;
+}

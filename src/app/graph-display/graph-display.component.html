@@ -1,7 +1,7 @@
 <div class="container-fluid h-100 w-100">
     <div class="row h-100 flexNoWrap">
         <div id="engine-list" class="col-auto overflow-auto">
-            <pxb-score-card
+            <pxb-score-card id="graph-score-card"
                 *ngFor="let engine of this.GetEngines(); let i = index"
                 [ngClass]="{ engineCardActive: engine.IsOn, engineError: engine.IsError, engineWarn: engine.IsWarn }"
                 [headerTitle]="engine.Name"

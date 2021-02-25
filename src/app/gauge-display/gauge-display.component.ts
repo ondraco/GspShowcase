@@ -5,13 +5,14 @@ import { DataProvider } from '../common/DataProvider/dataProvider';
 import { Engine } from '../common/engine';
 import { ValueCollection } from '../common/ValueProvider/tagValue';
 import { ValueProvider } from '../common/ValueProvider/valueProvider';
+import { AppColorsService } from '../services/app-colors.service';
 import { UserDetailService } from '../services/auth-workflow/user-detail.service';
 import { ViewportService } from '../services/viewport/viewport.service';
 
 @Component({
     selector: 'app-gauge-display',
     templateUrl: './gauge-display.component.html',
-    styleUrls: ['./gauge-display.component.less'],
+    styleUrls: ['./gauge-display.component.scss'],
 })
 export class GaugeDisplayComponent implements OnInit, OnDestroy, AfterViewInit {
     optTemp: object = {
@@ -65,6 +66,7 @@ export class GaugeDisplayComponent implements OnInit, OnDestroy, AfterViewInit {
         private valueProvider: ValueProvider,
         private dataProvider: DataProvider,
         public readonly userDetailService: UserDetailService,
+        public readonly appColorService: AppColorsService,
         private readonly _viewportService: ViewportService
     ) {}
 
